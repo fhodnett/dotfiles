@@ -46,12 +46,14 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 "color wombat256mod
 color tango2
 
+execute pathogen#infect()
+
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
 map <C-l> <ESC>:tabn<CR>
 autocmd VimEnter * NERDTree
 autocmd BufEnter * NERDTreeMirror
-map <C-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <C-d> :NERDTreeToggle<CR>
 set guioptions-=T
 set ofu=syntaxcomplete#Complete
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
@@ -60,3 +62,6 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 "command to remove all trailing whitespace
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+"change tab to 4 spaces for python only
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
